@@ -42,7 +42,7 @@ Start a new session and use `/neonloops-workflows:create-workflow`.
 
 The ZIP is an alternative personal upload for Claude. Use the release asset named
 `neonloops-workflows.zip`, not GitHub's repository source ZIP. The marketplace ID is
-`neonloops-public` and the displayed publisher is **neonloops**.
+`neonloops-public` and the package author is **neonloops**.
 
 ## Try a recurring job
 
