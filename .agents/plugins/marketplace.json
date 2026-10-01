@@ -1,0 +1,20 @@
+{
+  "name": "neonloops-public",
+  "interface": {
+    "displayName": "neonloops"
+  },
+  "plugins": [
+    {
+      "name": "neonloops-workflows",
+      "source": {
+        "source": "local",
+        "path": "./plugins/neonloops-workflows"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

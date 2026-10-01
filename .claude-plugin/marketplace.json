@@ -1,0 +1,15 @@
+{
+  "name": "neonloops-public",
+  "description": "Agentic workflow plugins for neonloops",
+  "owner": {
+    "name": "neonloops",
+    "email": "hi@neonloops.com"
+  },
+  "plugins": [
+    {
+      "name": "neonloops-workflows",
+      "source": "./plugins/neonloops-workflows",
+      "description": "Turn recurring work into an agentic workflow in your neonloops workspace."
+    }
+  ]
+}

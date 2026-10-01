@@ -1,0 +1,1967 @@
+{
+  "schemaVersion": "1.0",
+  "packageVersion": "0.1.2",
+  "researchedAt": "2026-10-01",
+  "countingUnit": "Distinct recurring business outcome, not app permutation, connector pair, prompt variation or recipe implementation.",
+  "counts": {
+    "recipes": 67,
+    "sources": 57,
+    "domains": {
+      "sales": 10,
+      "marketing": 9,
+      "customer_service": 10,
+      "finance_procurement": 10,
+      "people": 8,
+      "operations": 7,
+      "documents_contracts": 4,
+      "product_it": 3,
+      "commerce": 6
+    },
+    "sideEffects": {
+      "artifact_only": 42,
+      "external_send": 7,
+      "external_write": 18
+    },
+    "recipeLinkedResearchSources": 56,
+    "supplementalSources": 2
+  },
+  "recipes": [
+    {
+      "id": "sales-01",
+      "title": "Inbound lead qualification and proposed routing",
+      "domain": "sales",
+      "version": "0.1.0",
+      "trigger": "When a new inquiry arrives",
+      "outcome": "Qualified lead brief and proposed owner",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/sales-01.md",
+      "sourceIds": ["hubspot-guide", "hubspot-optimize", "make-sales"],
+      "evidenceUrls": [
+        "https://www.hubspot.com/products/workflow-automation-guide?department=sales",
+        "https://knowledge.hubspot.com/workflows/optimize-processes-with-workflows-and-other-tools",
+        "https://www.make.com/en/solutions/automate-sales"
+      ],
+      "resultFields": [
+        "qualification",
+        "criteriaEvidence",
+        "proposedOwner",
+        "openQuestions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "sales-01",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "sales-02",
+      "title": "Account research refresh",
+      "domain": "sales",
+      "version": "0.1.0",
+      "trigger": "When a target account is added or material news appears",
+      "outcome": "Dated account dossier with source links",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/sales-02.md",
+      "sourceIds": ["make-sales", "salesforce-sales"],
+      "evidenceUrls": [
+        "https://www.make.com/en/solutions/automate-sales",
+        "https://www.salesforce.com/sales/what-is-sales-automation/"
+      ],
+      "resultFields": [
+        "companyFacts",
+        "changesSincePrior",
+        "relevance",
+        "researchGaps",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "sales-02",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "sales-03",
+      "title": "Meeting preparation brief",
+      "domain": "sales",
+      "version": "0.1.0",
+      "trigger": "Before each customer meeting",
+      "outcome": "Private meeting brief with next steps",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/sales-03.md",
+      "sourceIds": ["make-sales", "zap-meetings"],
+      "evidenceUrls": [
+        "https://www.make.com/en/solutions/automate-sales",
+        "https://zapier.com/blog/streamline-meetings-with-ai/"
+      ],
+      "resultFields": [
+        "meetingContext",
+        "commitments",
+        "openIssues",
+        "questions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "sales-03",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "sales-04",
+      "title": "Sales call follow-up package",
+      "domain": "sales",
+      "version": "0.1.0",
+      "trigger": "When a sales transcript is ready",
+      "outcome": "Approved follow-up email and logged CRM note",
+      "sideEffects": "external_send",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/sales-04.md",
+      "sourceIds": ["make-sales", "zap-meetings"],
+      "evidenceUrls": [
+        "https://www.make.com/en/solutions/automate-sales",
+        "https://zapier.com/blog/streamline-meetings-with-ai/"
+      ],
+      "resultFields": [
+        "commitments",
+        "draftSubject",
+        "draftBody",
+        "crmNote",
+        "targetIds",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "meeting-followup",
+      "selectionBoundary": "Sales follow-up owns a prospect email plus CRM commitments; meeting actions own internal minutes/tasks.",
+      "relatedRecipes": ["operations-03"]
+    },
+    {
+      "id": "sales-05",
+      "title": "Stalled-deal intervention",
+      "domain": "sales",
+      "version": "0.1.0",
+      "trigger": "Every weekday for inactive open deals",
+      "outcome": "Owner task with supporting deal evidence",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/sales-05.md",
+      "sourceIds": ["hubspot-guide", "salesforce-sales"],
+      "evidenceUrls": [
+        "https://www.hubspot.com/products/workflow-automation-guide?department=sales",
+        "https://www.salesforce.com/sales/what-is-sales-automation/"
+      ],
+      "resultFields": [
+        "dealId",
+        "blockage",
+        "evidence",
+        "nextAction",
+        "taskOwner",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "sales-05",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "sales-06",
+      "title": "Pipeline and forecast commentary",
+      "domain": "sales",
+      "version": "0.1.0",
+      "trigger": "Every week before forecast review",
+      "outcome": "Pipeline report with risk and data-gap sections",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/sales-06.md",
+      "sourceIds": ["salesforce-sales", "zap-finance"],
+      "evidenceUrls": [
+        "https://www.salesforce.com/sales/what-is-sales-automation/",
+        "https://zapier.com/automations/finance"
+      ],
+      "resultFields": [
+        "stageTotals",
+        "periodChanges",
+        "riskItems",
+        "forecastGaps",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "sales-06",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "sales-07",
+      "title": "CRM quality repair proposals",
+      "domain": "sales",
+      "version": "0.1.0",
+      "trigger": "Every week or after a bulk import",
+      "outcome": "Review queue with proposed field changes",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/sales-07.md",
+      "sourceIds": ["hubspot-guide", "zap-crm"],
+      "evidenceUrls": [
+        "https://www.hubspot.com/products/workflow-automation-guide?department=sales",
+        "https://zapier.com/blog/crm-automation/"
+      ],
+      "resultFields": [
+        "recordId",
+        "proposedChanges",
+        "supportingSources",
+        "conflicts",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "sales-07",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "sales-08",
+      "title": "Quote and proposal preparation",
+      "domain": "sales",
+      "version": "0.1.0",
+      "trigger": "When a qualified opportunity requests a quote",
+      "outcome": "Draft proposal and quote for commercial approval",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/sales-08.md",
+      "sourceIds": ["salesforce-quotes", "salesforce-sales"],
+      "evidenceUrls": [
+        "https://help.salesforce.com/s/articleView?id=sales.quotes_overview.htm&language=en_US&type=5",
+        "https://www.salesforce.com/sales/what-is-sales-automation/"
+      ],
+      "resultFields": [
+        "requirementMapping",
+        "lineItems",
+        "commercialGaps",
+        "draftProposal",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "sales-08",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "sales-09",
+      "title": "Buying-signal follow-up queue",
+      "domain": "sales",
+      "version": "0.1.0",
+      "trigger": "When product, website or account signals cross configured rules",
+      "outcome": "Prioritized outreach task with source events",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/sales-09.md",
+      "sourceIds": ["hubspot-guide", "make-sales"],
+      "evidenceUrls": [
+        "https://www.hubspot.com/products/workflow-automation-guide?department=sales",
+        "https://www.make.com/en/solutions/automate-sales"
+      ],
+      "resultFields": [
+        "accountId",
+        "signalEvidence",
+        "priorityReason",
+        "outreachTask",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "sales-09",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "sales-10",
+      "title": "Sales-to-delivery handoff",
+      "domain": "sales",
+      "version": "0.1.0",
+      "trigger": "When a deal is marked won",
+      "outcome": "Delivery project and handoff brief",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/sales-10.md",
+      "sourceIds": ["zap-crm", "make-sales", "make-ops"],
+      "evidenceUrls": [
+        "https://zapier.com/blog/crm-automation/",
+        "https://www.make.com/en/solutions/automate-sales",
+        "https://www.make.com/en/solutions/automate-operations"
+      ],
+      "resultFields": [
+        "scopeSummary",
+        "commitments",
+        "missingHandoffFacts",
+        "projectFields",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "customer-delivery",
+      "selectionBoundary": "Sales handoff transfers signed promises to delivery; onboarding coordinates customer milestones after ownership is accepted.",
+      "relatedRecipes": ["service-06"]
+    },
+    {
+      "id": "marketing-01",
+      "title": "Competitive-change briefing",
+      "domain": "marketing",
+      "version": "0.1.0",
+      "trigger": "Every week or when watched pages change",
+      "outcome": "Competitive update with implications and sources",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/marketing-01.md",
+      "sourceIds": ["zap-competitor", "n8n-competitor"],
+      "evidenceUrls": [
+        "https://zapier.com/fr/blog/automate-competitor-analysis/",
+        "https://n8n.io/workflows/6672-ai-driven-competitor-and-market-intelligence-with-gpt-4-and-apify/"
+      ],
+      "resultFields": [
+        "materialChanges",
+        "implications",
+        "unchangedItems",
+        "sourceDates",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "marketing-01",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "marketing-02",
+      "title": "SEO performance and repair brief",
+      "domain": "marketing",
+      "version": "0.1.0",
+      "trigger": "Every week",
+      "outcome": "SEO priorities with affected URLs and data",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/marketing-02.md",
+      "sourceIds": ["n8n-seo", "n8n-content-gap"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/3712-automate-weekly-seo-reports-from-google-search-console-to-email/",
+        "https://n8n.io/workflows/14956-generate-competitor-content-gap-reports-in-slack-with-gpt-4o-mini/"
+      ],
+      "resultFields": [
+        "metricChanges",
+        "affectedUrls",
+        "prioritizedRepairs",
+        "unknownCauses",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "marketing-02",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "marketing-03",
+      "title": "Content opportunity and brief queue",
+      "domain": "marketing",
+      "version": "0.1.0",
+      "trigger": "Every planning cycle",
+      "outcome": "Ranked content briefs in editorial backlog",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/marketing-03.md",
+      "sourceIds": ["n8n-content-gap", "make-marketing"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/14956-generate-competitor-content-gap-reports-in-slack-with-gpt-4o-mini/",
+        "https://www.make.com/en/solutions/automate-marketing"
+      ],
+      "resultFields": [
+        "coverageGaps",
+        "proposedBriefs",
+        "audienceNeed",
+        "priorityRationale",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "marketing-03",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "marketing-04",
+      "title": "Long-form content draft",
+      "domain": "marketing",
+      "version": "0.1.0",
+      "trigger": "When an approved brief is ready",
+      "outcome": "Reviewable article in draft storage",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/marketing-04.md",
+      "sourceIds": ["make-marketing"],
+      "evidenceUrls": ["https://www.make.com/en/solutions/automate-marketing"],
+      "resultFields": [
+        "articleDraft",
+        "claimSources",
+        "editorialQuestions",
+        "unsupportedClaims",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "marketing-04",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "marketing-05",
+      "title": "Content repurposing and distribution",
+      "domain": "marketing",
+      "version": "0.1.0",
+      "trigger": "When a source asset is approved",
+      "outcome": "Approved scheduled channel posts",
+      "sideEffects": "external_send",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/marketing-05.md",
+      "sourceIds": ["make-marketing", "zap-release"],
+      "evidenceUrls": [
+        "https://www.make.com/en/solutions/automate-marketing",
+        "https://zapier.com/automations/product/product-launch-management/feature-announcement"
+      ],
+      "resultFields": [
+        "channelDrafts",
+        "approvedAssetId",
+        "channelTargets",
+        "scheduledTimes",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "content-distribution",
+      "selectionBoundary": "Repurposing adapts an approved source asset; launch preparation owns release facts, audience approvals and publishing tasks.",
+      "relatedRecipes": ["marketing-09"]
+    },
+    {
+      "id": "marketing-06",
+      "title": "Campaign performance narrative",
+      "domain": "marketing",
+      "version": "0.1.0",
+      "trigger": "Every week and at campaign close",
+      "outcome": "Campaign report with uncertainty and next experiments",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/marketing-06.md",
+      "sourceIds": ["zap-social-report", "make-marketing"],
+      "evidenceUrls": [
+        "https://zapier.com/automations/marketing/social-media-marketing/social-media-reporting",
+        "https://www.make.com/en/solutions/automate-marketing"
+      ],
+      "resultFields": [
+        "kpiResults",
+        "periodComparisons",
+        "likelyDrivers",
+        "nextExperiments",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "periodic-metrics",
+      "selectionBoundary": "Campaign narrative uses attribution/KPI definitions; budget watch uses approved spend thresholds; operational exceptions use service/process metrics and owner rules.",
+      "relatedRecipes": ["finance-07", "operations-07"]
+    },
+    {
+      "id": "marketing-07",
+      "title": "Lead nurture and re-engagement",
+      "domain": "marketing",
+      "version": "0.1.0",
+      "trigger": "When opted-in lead behavior meets campaign criteria",
+      "outcome": "Approved lifecycle email sequence",
+      "sideEffects": "external_send",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/marketing-07.md",
+      "sourceIds": ["hubspot-guide", "make-marketing"],
+      "evidenceUrls": [
+        "https://www.hubspot.com/products/workflow-automation-guide?department=sales",
+        "https://www.make.com/en/solutions/automate-marketing"
+      ],
+      "resultFields": [
+        "eligibilityEvidence",
+        "sequenceDrafts",
+        "audienceIds",
+        "exclusions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "marketing-07",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "marketing-08",
+      "title": "Brand and factual review queue",
+      "domain": "marketing",
+      "version": "0.1.0",
+      "trigger": "When a campaign draft is submitted",
+      "outcome": "Annotated review report and revised draft",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/marketing-08.md",
+      "sourceIds": ["make-marketing"],
+      "evidenceUrls": ["https://www.make.com/en/solutions/automate-marketing"],
+      "resultFields": [
+        "claimFindings",
+        "voiceFindings",
+        "annotatedDraft",
+        "revisedDraft",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "marketing-08",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "marketing-09",
+      "title": "Launch communications package",
+      "domain": "marketing",
+      "version": "0.1.0",
+      "trigger": "When a release or campaign is approved for launch",
+      "outcome": "Approved announcement drafts and publishing tasks",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/marketing-09.md",
+      "sourceIds": ["zap-release", "make-marketing"],
+      "evidenceUrls": [
+        "https://zapier.com/automations/product/product-launch-management/feature-announcement",
+        "https://www.make.com/en/solutions/automate-marketing"
+      ],
+      "resultFields": [
+        "audienceMessages",
+        "launchFacts",
+        "publishingTasks",
+        "openQuestions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "content-distribution",
+      "selectionBoundary": "Repurposing adapts an approved source asset; launch preparation owns release facts, audience approvals and publishing tasks.",
+      "relatedRecipes": ["marketing-05"]
+    },
+    {
+      "id": "service-01",
+      "title": "Support intake triage",
+      "domain": "customer_service",
+      "version": "0.1.0",
+      "trigger": "When an inquiry arrives",
+      "outcome": "Tagged ticket assigned to the correct queue",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/service-01.md",
+      "sourceIds": ["n8n-triage", "zap-support"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/19465-triage-and-route-ai-powered-support-tickets-with-google-gemini-trello-and-gmail/",
+        "https://zapier.com/automation/customer-automation/customer-support"
+      ],
+      "resultFields": [
+        "category",
+        "urgency",
+        "routingEvidence",
+        "targetQueue",
+        "missingFields",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "inquiry-triage",
+      "selectionBoundary": "Support triage changes ticket routing under policy; shared-inbox triage produces a private draft queue without mailbox changes.",
+      "relatedRecipes": ["operations-02"]
+    },
+    {
+      "id": "service-02",
+      "title": "Knowledge-grounded reply preparation",
+      "domain": "customer_service",
+      "version": "0.1.0",
+      "trigger": "When a ticket awaits a response",
+      "outcome": "Draft reply with evidence and escalation reason",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/service-02.md",
+      "sourceIds": ["n8n-it-help", "n8n-triage"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/3498-build-an-it-support-assistant-chatbot-leveraging-existing-support-portal/",
+        "https://n8n.io/workflows/19465-triage-and-route-ai-powered-support-tickets-with-google-gemini-trello-and-gmail/"
+      ],
+      "resultFields": [
+        "draftReply",
+        "policyCitations",
+        "escalationReason",
+        "missingContext",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "policy-response",
+      "selectionBoundary": "Support reply preparation applies customer/service policy; employee questions apply HR policy with individual rights and benefits escalated to HR.",
+      "relatedRecipes": ["people-08"]
+    },
+    {
+      "id": "service-03",
+      "title": "SLA and escalation watch",
+      "domain": "customer_service",
+      "version": "0.1.0",
+      "trigger": "On a recurring check before service deadlines",
+      "outcome": "Escalation task or internal message",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/service-03.md",
+      "sourceIds": ["hubspot-guide", "atlassian-slack"],
+      "evidenceUrls": [
+        "https://www.hubspot.com/products/workflow-automation-guide?department=sales",
+        "https://wac-cdn.atlassian.com/software/jira/automation-template-library/slack-ms-teams"
+      ],
+      "resultFields": [
+        "deadlineFacts",
+        "blockers",
+        "escalationSummary",
+        "escalationTarget",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "service-03",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "service-04",
+      "title": "Support quality and trend review",
+      "domain": "customer_service",
+      "version": "0.1.0",
+      "trigger": "Every week",
+      "outcome": "Quality report with ticket evidence",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/service-04.md",
+      "sourceIds": ["zap-support", "n8n-ticket-report"],
+      "evidenceUrls": [
+        "https://zapier.com/automation/customer-automation/customer-support",
+        "https://n8n.io/workflows/4447-categorize-support-tickets-with-gemini-ai-typeform-and-google-sheets-reporting/"
+      ],
+      "resultFields": [
+        "themes",
+        "rubricFindings",
+        "supportingTickets",
+        "reviewLimitations",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "service-04",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "service-05",
+      "title": "Knowledge-base gap drafts",
+      "domain": "customer_service",
+      "version": "0.1.0",
+      "trigger": "Every week or after repeated unanswered questions",
+      "outcome": "Article proposals linked to source cases",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/service-05.md",
+      "sourceIds": ["n8n-kb"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/14951-detect-kb-gaps-and-auto-draft-articles-with-gpt-41-slack-and-gmail/"
+      ],
+      "resultFields": [
+        "gapTopics",
+        "relatedCases",
+        "existingArticleConflicts",
+        "articleDrafts",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "service-05",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "service-06",
+      "title": "Customer onboarding coordination",
+      "domain": "customer_service",
+      "version": "0.1.0",
+      "trigger": "When a new customer contract starts",
+      "outcome": "Customer project with personalized next-step tasks",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/service-06.md",
+      "sourceIds": ["n8n-onboarding", "make-finance-cases"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/5676-customer-onboarding-automation-with-hubspot-email-sequences-and-team-alerts/",
+        "https://www.make.com/en/blog/success-stories-make-it-in-finance"
+      ],
+      "resultFields": [
+        "onboardingPlan",
+        "milestones",
+        "taskOwners",
+        "unresolvedCommitments",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "customer-delivery",
+      "selectionBoundary": "Sales handoff transfers signed promises to delivery; onboarding coordinates customer milestones after ownership is accepted.",
+      "relatedRecipes": ["sales-10"]
+    },
+    {
+      "id": "service-07",
+      "title": "Onboarding stall recovery",
+      "domain": "customer_service",
+      "version": "0.1.0",
+      "trigger": "Every weekday for incomplete milestones",
+      "outcome": "Owner intervention brief and outreach draft",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/service-07.md",
+      "sourceIds": ["hubspot-guide", "n8n-onboarding"],
+      "evidenceUrls": [
+        "https://www.hubspot.com/products/workflow-automation-guide?department=sales",
+        "https://n8n.io/workflows/5676-customer-onboarding-automation-with-hubspot-email-sequences-and-team-alerts/"
+      ],
+      "resultFields": [
+        "stalledMilestones",
+        "blockerEvidence",
+        "ownerIntervention",
+        "outreachDraft",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "service-07",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "service-08",
+      "title": "Renewal readiness brief",
+      "domain": "customer_service",
+      "version": "0.1.0",
+      "trigger": "At configured intervals before customer renewal",
+      "outcome": "Renewal brief with questions and next actions",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/service-08.md",
+      "sourceIds": ["hubspot-guide", "n8n-renewal"],
+      "evidenceUrls": [
+        "https://www.hubspot.com/products/workflow-automation-guide?department=sales",
+        "https://n8n.io/workflows/14155-send-contract-renewal-reminders-from-hubspot-via-gmail-and-slack-alerts/"
+      ],
+      "resultFields": [
+        "renewalTimeline",
+        "valueEvidence",
+        "unresolvedConcerns",
+        "reviewQuestions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "service-08",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "service-09",
+      "title": "Customer feedback follow-up",
+      "domain": "customer_service",
+      "version": "0.1.0",
+      "trigger": "When post-support survey feedback arrives",
+      "outcome": "Approved follow-up email and owner task",
+      "sideEffects": "external_send",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/service-09.md",
+      "sourceIds": ["hubspot-guide", "zap-support"],
+      "evidenceUrls": [
+        "https://www.hubspot.com/products/workflow-automation-guide?department=sales",
+        "https://zapier.com/automation/customer-automation/customer-support"
+      ],
+      "resultFields": [
+        "feedbackConcern",
+        "caseContext",
+        "draftFollowUp",
+        "ownerTask",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "service-09",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "service-10",
+      "title": "Dispute case evidence pack",
+      "domain": "customer_service",
+      "version": "0.1.0",
+      "trigger": "When a payment dispute or complaint opens",
+      "outcome": "Draft case evidence package",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/service-10.md",
+      "sourceIds": ["zap-support", "zap-finance", "stripe-disputes"],
+      "evidenceUrls": [
+        "https://zapier.com/automation/customer-automation/customer-support",
+        "https://zapier.com/automations/finance",
+        "https://docs.stripe.com/disputes/responding"
+      ],
+      "resultFields": [
+        "caseChronology",
+        "transactionFacts",
+        "evidenceInventory",
+        "missingEvidence",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "service-10",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "finance-01",
+      "title": "Invoice intake and review packet",
+      "domain": "finance_procurement",
+      "version": "0.1.0",
+      "trigger": "When an invoice document arrives",
+      "outcome": "Structured invoice draft and approval packet",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/finance-01.md",
+      "sourceIds": ["ms-invoice", "make-finance-cases", "zap-finance"],
+      "evidenceUrls": [
+        "https://learn.microsoft.com/en-us/training/modules/guided-project-document-process-model-email-approval-ai-builder/",
+        "https://www.make.com/en/blog/success-stories-make-it-in-finance",
+        "https://zapier.com/automations/finance"
+      ],
+      "resultFields": [
+        "invoiceFields",
+        "purchaseOrderComparison",
+        "discrepancies",
+        "approvalPacket",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "finance-01",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "finance-02",
+      "title": "Expense review preparation",
+      "domain": "finance_procurement",
+      "version": "0.1.0",
+      "trigger": "When an employee submits expenses",
+      "outcome": "Expense-review packet with missing evidence",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/finance-02.md",
+      "sourceIds": ["zap-expenses", "ms-approval"],
+      "evidenceUrls": [
+        "https://zapier.com/automations/finance/expense-management",
+        "https://learn.microsoft.com/en-us/power-automate/modern-approvals"
+      ],
+      "resultFields": [
+        "claimEvidence",
+        "policyExceptions",
+        "missingReceipts",
+        "reviewPacket",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "finance-02",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "finance-03",
+      "title": "Reconciliation exception report",
+      "domain": "finance_procurement",
+      "version": "0.1.0",
+      "trigger": "On new statement or weekly close cycle",
+      "outcome": "Matched records and unresolved-exception report",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/finance-03.md",
+      "sourceIds": ["zap-accounting", "zap-finance"],
+      "evidenceUrls": [
+        "https://zapier.com/automations/finance/accounting",
+        "https://zapier.com/automations/finance"
+      ],
+      "resultFields": [
+        "matchedPairs",
+        "unmatchedItems",
+        "amountDifferences",
+        "investigationNotes",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "finance-03",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "finance-04",
+      "title": "Overdue receivable follow-up",
+      "domain": "finance_procurement",
+      "version": "0.1.0",
+      "trigger": "Every business day for overdue invoices",
+      "outcome": "Approved reminder email with case context",
+      "sideEffects": "external_send",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/finance-04.md",
+      "sourceIds": ["zap-ar", "zap-finance"],
+      "evidenceUrls": [
+        "https://zapier.com/automations/finance/accounts-receivable",
+        "https://zapier.com/automations/finance"
+      ],
+      "resultFields": [
+        "invoiceFacts",
+        "paymentChecks",
+        "disputeStatus",
+        "reminderDraft",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "finance-04",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "finance-05",
+      "title": "Financial close readiness",
+      "domain": "finance_procurement",
+      "version": "0.1.0",
+      "trigger": "Before each monthly close deadline",
+      "outcome": "Close-readiness brief with evidence links",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/finance-05.md",
+      "sourceIds": ["zap-accounting"],
+      "evidenceUrls": ["https://zapier.com/automations/finance/accounting"],
+      "resultFields": [
+        "checklistStatus",
+        "blockerEvidence",
+        "dependencies",
+        "signoffQuestions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "finance-05",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "finance-06",
+      "title": "Management variance commentary",
+      "domain": "finance_procurement",
+      "version": "0.1.0",
+      "trigger": "After each reporting-period refresh",
+      "outcome": "Draft management commentary with calculation references",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/finance-06.md",
+      "sourceIds": ["zap-fpa", "zap-finance"],
+      "evidenceUrls": [
+        "https://zapier.com/automations/finance/financial-planning-analysis",
+        "https://zapier.com/automations/finance"
+      ],
+      "resultFields": [
+        "calculatedVariances",
+        "supportedExplanations",
+        "timingEffects",
+        "openQuestions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "finance-06",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "finance-07",
+      "title": "Budget anomaly watch",
+      "domain": "finance_procurement",
+      "version": "0.1.0",
+      "trigger": "On scheduled spend refresh",
+      "outcome": "Exception brief for budget owner",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/finance-07.md",
+      "sourceIds": ["zap-fpa", "make-ops"],
+      "evidenceUrls": [
+        "https://zapier.com/automations/finance/financial-planning-analysis",
+        "https://www.make.com/en/solutions/automate-operations"
+      ],
+      "resultFields": [
+        "thresholdBreaches",
+        "vendorContext",
+        "timingAssessment",
+        "ownerQuestions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "periodic-metrics",
+      "selectionBoundary": "Campaign narrative uses attribution/KPI definitions; budget watch uses approved spend thresholds; operational exceptions use service/process metrics and owner rules.",
+      "relatedRecipes": ["marketing-06", "operations-07"]
+    },
+    {
+      "id": "finance-08",
+      "title": "Supplier quote comparison",
+      "domain": "finance_procurement",
+      "version": "0.1.0",
+      "trigger": "When quote deadline arrives",
+      "outcome": "Supplier comparison matrix with caveats",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/finance-08.md",
+      "sourceIds": ["n8n-rfq"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/18863-process-rfq-quotes-from-gmail-pdfs-using-claude-postgresql-and-slack/"
+      ],
+      "resultFields": [
+        "comparisonRows",
+        "normalizedTerms",
+        "noncomparableItems",
+        "buyerQuestions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "finance-08",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "finance-09",
+      "title": "Purchase request review",
+      "domain": "finance_procurement",
+      "version": "0.1.0",
+      "trigger": "When a purchase request is submitted",
+      "outcome": "Purchase-review packet routed to approver",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/finance-09.md",
+      "sourceIds": ["make-finance-cases", "ms-approval", "zap-finance"],
+      "evidenceUrls": [
+        "https://www.make.com/en/blog/success-stories-make-it-in-finance",
+        "https://learn.microsoft.com/en-us/power-automate/modern-approvals",
+        "https://zapier.com/automations/finance"
+      ],
+      "resultFields": [
+        "requestSummary",
+        "existingOptions",
+        "policyChecks",
+        "approverPacket",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "finance-09",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "finance-10",
+      "title": "Vendor renewal decision brief",
+      "domain": "finance_procurement",
+      "version": "0.1.0",
+      "trigger": "Before vendor cancellation or renewal deadlines",
+      "outcome": "Renewal brief with keep, change or investigate options",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/finance-10.md",
+      "sourceIds": ["n8n-saas-renewal", "zap-expenses"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/15496-monitor-saas-contract-renewals-from-google-sheets-and-send-slack-alerts/",
+        "https://zapier.com/automations/finance/expense-management"
+      ],
+      "resultFields": [
+        "noticeDates",
+        "usageEvidence",
+        "commercialChanges",
+        "decisionOptions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "finance-10",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "people-01",
+      "title": "Hiring materials preparation",
+      "domain": "people",
+      "version": "0.1.0",
+      "trigger": "When an approved role opens",
+      "outcome": "Job-description and interview-kit drafts",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/people-01.md",
+      "sourceIds": ["zap-hr", "make-hr"],
+      "evidenceUrls": [
+        "https://zapier.com/blog/human-resources-automation/",
+        "https://www.make.com/en/solutions/automate-hr"
+      ],
+      "resultFields": [
+        "roleMaterials",
+        "competencyQuestions",
+        "processGaps",
+        "reviewNotes",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "people-01",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "people-02",
+      "title": "Candidate facts intake",
+      "domain": "people",
+      "version": "0.1.0",
+      "trigger": "When an application arrives",
+      "outcome": "Structured factual dossier and missing-document checklist",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/people-02.md",
+      "sourceIds": ["zap-hr", "make-hr"],
+      "evidenceUrls": [
+        "https://zapier.com/blog/human-resources-automation/",
+        "https://www.make.com/en/solutions/automate-hr"
+      ],
+      "resultFields": [
+        "candidateFacts",
+        "sourceSpans",
+        "missingDocuments",
+        "factualConflicts",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "people-02",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "people-03",
+      "title": "Interview scheduling coordination",
+      "domain": "people",
+      "version": "0.1.0",
+      "trigger": "When a recruiter advances an applicant",
+      "outcome": "Approved interview invitations",
+      "sideEffects": "external_send",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/people-03.md",
+      "sourceIds": ["zap-hr", "zap-meetings"],
+      "evidenceUrls": [
+        "https://zapier.com/blog/human-resources-automation/",
+        "https://zapier.com/blog/streamline-meetings-with-ai/"
+      ],
+      "resultFields": [
+        "availableSlots",
+        "constraints",
+        "inviteDraft",
+        "recipientIds",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "people-03",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "people-04",
+      "title": "Interview feedback completion and summary",
+      "domain": "people",
+      "version": "0.1.0",
+      "trigger": "After an interview and at feedback deadline",
+      "outcome": "Feedback-completeness brief and summary",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/people-04.md",
+      "sourceIds": ["n8n-interview", "n8n-interview-reminders"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/9139-audit-interview-feedback-and-report-via-slack-with-gpt-4o-mini-and-google-sheets/",
+        "https://n8n.io/workflows/7987-automate-post-interview-feedback-reminders-using-google-sheets-slack-and-gmail/"
+      ],
+      "resultFields": [
+        "submittedFeedback",
+        "missingFeedback",
+        "evidenceSummary",
+        "unresolvedConflicts",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "people-04",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "people-05",
+      "title": "New-hire onboarding coordination",
+      "domain": "people",
+      "version": "0.1.0",
+      "trigger": "When an accepted start date is recorded",
+      "outcome": "Assigned onboarding checklist",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/people-05.md",
+      "sourceIds": ["zap-onoff", "make-hr"],
+      "evidenceUrls": [
+        "https://zapier.com/blog/automate-employee-onboarding-offboarding/",
+        "https://www.make.com/en/solutions/automate-hr"
+      ],
+      "resultFields": [
+        "onboardingTasks",
+        "owners",
+        "dueDates",
+        "prerequisites",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "people-05",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "people-06",
+      "title": "Departure handoff coordination",
+      "domain": "people",
+      "version": "0.1.0",
+      "trigger": "When HR authorizes an employee departure",
+      "outcome": "Assigned offboarding checklist with completion-evidence fields",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/people-06.md",
+      "sourceIds": ["zap-onoff", "make-hr"],
+      "evidenceUrls": [
+        "https://zapier.com/blog/automate-employee-onboarding-offboarding/",
+        "https://www.make.com/en/solutions/automate-hr"
+      ],
+      "resultFields": [
+        "handoffTasks",
+        "assetChecklist",
+        "ownershipGaps",
+        "completionEvidence",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "people-06",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "people-07",
+      "title": "Leave-request approval routing",
+      "domain": "people",
+      "version": "0.1.0",
+      "trigger": "When an employee submits leave",
+      "outcome": "Approval packet and recorded approver decision",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/people-07.md",
+      "sourceIds": ["ms-approval", "zap-hr"],
+      "evidenceUrls": [
+        "https://learn.microsoft.com/en-us/power-automate/modern-approvals",
+        "https://zapier.com/blog/human-resources-automation/"
+      ],
+      "resultFields": [
+        "requestFacts",
+        "coverageConflicts",
+        "approverDecision",
+        "decisionRecord",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "people-07",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "people-08",
+      "title": "Employee policy question drafts",
+      "domain": "people",
+      "version": "0.1.0",
+      "trigger": "When an employee submits a policy question",
+      "outcome": "Cited draft answer or HR escalation",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/people-08.md",
+      "sourceIds": ["make-hr", "n8n-it-help"],
+      "evidenceUrls": [
+        "https://www.make.com/en/solutions/automate-hr",
+        "https://n8n.io/workflows/3498-build-an-it-support-assistant-chatbot-leveraging-existing-support-portal/"
+      ],
+      "resultFields": [
+        "policyAnswerDraft",
+        "citedSections",
+        "applicabilityLimits",
+        "hrEscalation",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "policy-response",
+      "selectionBoundary": "Support reply preparation applies customer/service policy; employee questions apply HR policy with individual rights and benefits escalated to HR.",
+      "relatedRecipes": ["service-02"]
+    },
+    {
+      "id": "operations-01",
+      "title": "Morning work briefing",
+      "domain": "operations",
+      "version": "0.1.0",
+      "trigger": "Every workday morning",
+      "outcome": "Private agenda and action brief",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/operations-01.md",
+      "sourceIds": ["n8n-calendar"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/4385-ai-powered-calendar-and-meeting-digest-with-gmail-and-gpt-4oclaude-daily-brief/"
+      ],
+      "resultFields": [
+        "agenda",
+        "commitments",
+        "conflicts",
+        "preparationNeeds",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "operations-01",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "operations-02",
+      "title": "Shared inbox triage and draft queue",
+      "domain": "operations",
+      "version": "0.1.0",
+      "trigger": "When new shared-inbox mail arrives",
+      "outcome": "Prioritized message and reply-draft queue",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/operations-02.md",
+      "sourceIds": ["n8n-email"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/19734-triage-inbound-email-with-imap-custom-ai-http-apis-and-smtp/"
+      ],
+      "resultFields": [
+        "messagePriorities",
+        "routingSuggestions",
+        "replyDrafts",
+        "missingContext",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "inquiry-triage",
+      "selectionBoundary": "Support triage changes ticket routing under policy; shared-inbox triage produces a private draft queue without mailbox changes.",
+      "relatedRecipes": ["service-01"]
+    },
+    {
+      "id": "operations-03",
+      "title": "Meeting decisions and action tracking",
+      "domain": "operations",
+      "version": "0.1.0",
+      "trigger": "When a meeting transcript is available",
+      "outcome": "Approved notes and assigned follow-up tasks",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/operations-03.md",
+      "sourceIds": ["zap-meetings", "zap-projects"],
+      "evidenceUrls": [
+        "https://zapier.com/blog/streamline-meetings-with-ai/",
+        "https://zapier.com/blog/project-management-automation/"
+      ],
+      "resultFields": [
+        "decisions",
+        "commitments",
+        "taskProposals",
+        "ambiguousStatements",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "meeting-followup",
+      "selectionBoundary": "Sales follow-up owns a prospect email plus CRM commitments; meeting actions own internal minutes/tasks.",
+      "relatedRecipes": ["sales-04"]
+    },
+    {
+      "id": "operations-04",
+      "title": "Project intake scoping",
+      "domain": "operations",
+      "version": "0.1.0",
+      "trigger": "When a project request is submitted",
+      "outcome": "Draft project brief and work breakdown",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/operations-04.md",
+      "sourceIds": ["zap-projects", "make-ops"],
+      "evidenceUrls": [
+        "https://zapier.com/blog/project-management-automation/",
+        "https://www.make.com/en/solutions/automate-operations"
+      ],
+      "resultFields": [
+        "scopeDraft",
+        "workBreakdown",
+        "assumptions",
+        "clarificationQuestions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "operations-04",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "operations-05",
+      "title": "Stakeholder project status report",
+      "domain": "operations",
+      "version": "0.1.0",
+      "trigger": "Every week before stakeholder review",
+      "outcome": "Status brief with source links",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/operations-05.md",
+      "sourceIds": ["atlassian-delivery", "make-ops"],
+      "evidenceUrls": [
+        "https://jirareleases.atlassian.com/announcements/meet-the-jira-agent-that-runs-your-delivery-rituals",
+        "https://www.make.com/en/solutions/automate-operations"
+      ],
+      "resultFields": [
+        "milestoneStatus",
+        "changesSincePrior",
+        "blockers",
+        "conflictingUpdates",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "operations-05",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "operations-06",
+      "title": "Overdue-work escalation",
+      "domain": "operations",
+      "version": "0.1.0",
+      "trigger": "Every day for work past due",
+      "outcome": "Escalation task or internal notification",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/operations-06.md",
+      "sourceIds": ["make-ops", "atlassian-slack"],
+      "evidenceUrls": [
+        "https://www.make.com/en/solutions/automate-operations",
+        "https://wac-cdn.atlassian.com/software/jira/automation-template-library/slack-ms-teams"
+      ],
+      "resultFields": [
+        "overdueItems",
+        "dependencyEvidence",
+        "nextOwner",
+        "escalationPayload",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "operations-06",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "operations-07",
+      "title": "Operational KPI exception briefing",
+      "domain": "operations",
+      "version": "0.1.0",
+      "trigger": "On each scheduled dashboard refresh",
+      "outcome": "Exception report with investigation questions",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/operations-07.md",
+      "sourceIds": ["make-ops"],
+      "evidenceUrls": ["https://www.make.com/en/solutions/automate-operations"],
+      "resultFields": [
+        "metricExceptions",
+        "baselineComparison",
+        "contextEvidence",
+        "investigationQuestions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "periodic-metrics",
+      "selectionBoundary": "Campaign narrative uses attribution/KPI definitions; budget watch uses approved spend thresholds; operational exceptions use service/process metrics and owner rules.",
+      "relatedRecipes": ["marketing-06", "finance-07"]
+    },
+    {
+      "id": "documents-01",
+      "title": "Document intake and metadata register",
+      "domain": "documents_contracts",
+      "version": "0.1.0",
+      "trigger": "When a business document enters an approved folder",
+      "outcome": "Document metadata record with extraction evidence and possible duplicates",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/documents-01.md",
+      "sourceIds": ["zap-document", "make-finance-cases", "zap-contracts"],
+      "evidenceUrls": [
+        "https://www.zapier.com/blog/4-ways-to-improve-document-control-with-automation/",
+        "https://www.make.com/en/blog/success-stories-make-it-in-finance",
+        "https://zapier.com/automations/legal/contract-management/contract-documentation-management"
+      ],
+      "resultFields": [
+        "documentId",
+        "extractedMetadata",
+        "classification",
+        "duplicateCandidates",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "documents-01",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "documents-02",
+      "title": "Contract clause review preparation",
+      "domain": "documents_contracts",
+      "version": "0.1.0",
+      "trigger": "When a contract draft is submitted",
+      "outcome": "Reviewer packet of deviations and open questions",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/documents-02.md",
+      "sourceIds": ["n8n-contract-review"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/15307-analyze-legal-contract-risk-with-google-gemini-hybrid-rag-and-supabase/"
+      ],
+      "resultFields": [
+        "clauseReferences",
+        "playbookDeviations",
+        "openQuestions",
+        "reviewerPacket",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "documents-02",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "documents-03",
+      "title": "Approved-template contract packet",
+      "domain": "documents_contracts",
+      "version": "0.1.0",
+      "trigger": "When a contract request is complete",
+      "outcome": "Draft contract packet for review",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/documents-03.md",
+      "sourceIds": ["n8n-contract-draft", "ms-approval"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/11849-generate-ai-powered-contracts-with-openai-e-signature-gmail-and-sheets/",
+        "https://learn.microsoft.com/en-us/power-automate/modern-approvals"
+      ],
+      "resultFields": [
+        "populatedFields",
+        "sourceMapping",
+        "draftPacket",
+        "unresolvedTerms",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "documents-03",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "documents-04",
+      "title": "Signature completion and record closure",
+      "domain": "documents_contracts",
+      "version": "0.1.0",
+      "trigger": "When an agreement is signed or expires unsigned",
+      "outcome": "Executed agreement register and follow-up tasks",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/documents-04.md",
+      "sourceIds": ["zap-contracts", "n8n-contract-draft"],
+      "evidenceUrls": [
+        "https://zapier.com/automations/legal/contract-management/contract-documentation-management",
+        "https://n8n.io/workflows/11849-generate-ai-powered-contracts-with-openai-e-signature-gmail-and-sheets/"
+      ],
+      "resultFields": [
+        "envelopeStatus",
+        "agreementReferences",
+        "registerFields",
+        "followupTasks",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "documents-04",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "product-01",
+      "title": "Product feedback synthesis",
+      "domain": "product_it",
+      "version": "0.1.0",
+      "trigger": "Every product planning cycle",
+      "outcome": "Evidence-linked opportunity report",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/product-01.md",
+      "sourceIds": ["n8n-feedback", "n8n-reviews"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/4686-automate-customer-feedback-analysis-with-forms-ai-google-sheets-and-whatsapp/",
+        "https://n8n.io/workflows/12066-analyze-woocommerce-product-reviews-with-gpt-4-airtable-and-slack-summaries/"
+      ],
+      "resultFields": [
+        "needClusters",
+        "sourceCounts",
+        "counterexamples",
+        "opportunityQuestions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "product-01",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "product-02",
+      "title": "Bug intake and duplicate review",
+      "domain": "product_it",
+      "version": "0.1.0",
+      "trigger": "When a structured bug report arrives",
+      "outcome": "New issue or linked duplicate with supporting context",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/product-02.md",
+      "sourceIds": ["n8n-bugs", "atlassian-templates"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/9655-automate-bug-reports-with-gemini-ai-jotform-to-github-with-telegram-alerts/",
+        "https://www.atlassian.com/software/jira/automation-template-library"
+      ],
+      "resultFields": [
+        "reproductionFacts",
+        "duplicateEvidence",
+        "issuePayload",
+        "missingSteps",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "product-02",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "product-03",
+      "title": "Incident postmortem preparation",
+      "domain": "product_it",
+      "version": "0.1.0",
+      "trigger": "When an incident is closed",
+      "outcome": "Draft postmortem and proposed follow-up actions",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/product-03.md",
+      "sourceIds": ["n8n-postmortem"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/18513-draft-and-track-incident-postmortems-with-openai-google-sheets-discord-and-gmail/"
+      ],
+      "resultFields": [
+        "eventTimeline",
+        "verifiedFacts",
+        "hypotheses",
+        "followupProposals",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "product-03",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "commerce-01",
+      "title": "Stock exception and replenishment brief",
+      "domain": "commerce",
+      "version": "0.1.0",
+      "trigger": "On stock threshold events and weekly review",
+      "outcome": "Stock-exception report and draft reorder proposal",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/commerce-01.md",
+      "sourceIds": ["shopify-flow", "shopify-examples", "make-ops"],
+      "evidenceUrls": [
+        "https://www.shopify.com/flow",
+        "https://help.shopify.com/en/manual/shopify-flow/reference/examples?locale=en%23%2Flogin",
+        "https://www.make.com/en/solutions/automate-operations"
+      ],
+      "resultFields": [
+        "stockExceptions",
+        "leadTimeFacts",
+        "reorderProposal",
+        "buyerQuestions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "commerce-01",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "commerce-02",
+      "title": "Fulfillment exception coordination",
+      "domain": "commerce",
+      "version": "0.1.0",
+      "trigger": "Every day or when fulfillment stalls",
+      "outcome": "Expedite task and customer-update draft",
+      "sideEffects": "external_write",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/commerce-02.md",
+      "sourceIds": ["shopify-schedules", "shopify-order"],
+      "evidenceUrls": [
+        "https://help.shopify.com/en/manual/shopify-flow/advanced-workflows/examples",
+        "https://www.shopify.com/blog/ecommerce-order-automation"
+      ],
+      "resultFields": [
+        "delayContext",
+        "expediteTask",
+        "customerDraft",
+        "unresolvedTracking",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "commerce-02",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "commerce-03",
+      "title": "Order anomaly review packet",
+      "domain": "commerce",
+      "version": "0.1.0",
+      "trigger": "When configured order-risk rules flag an order",
+      "outcome": "Merchant review packet with missing evidence",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/commerce-03.md",
+      "sourceIds": ["shopify-flow", "shopify-examples"],
+      "evidenceUrls": [
+        "https://www.shopify.com/flow",
+        "https://help.shopify.com/en/manual/shopify-flow/reference/examples?locale=en%23%2Flogin"
+      ],
+      "resultFields": [
+        "riskRuleEvidence",
+        "inconsistencies",
+        "missingEvidence",
+        "merchantQuestions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "commerce-03",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "commerce-04",
+      "title": "Product listing preparation",
+      "domain": "commerce",
+      "version": "0.1.0",
+      "trigger": "When approved product data changes",
+      "outcome": "Reviewable product-listing draft",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/commerce-04.md",
+      "sourceIds": ["n8n-catalog", "make-marketing"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/11695-generate-product-descriptions-from-images-and-publish-to-shopify-using-ai/",
+        "https://www.make.com/en/solutions/automate-marketing"
+      ],
+      "resultFields": [
+        "listingDraft",
+        "specificationSources",
+        "missingSpecs",
+        "translationNotes",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "commerce-04",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "commerce-05",
+      "title": "Public review response queue",
+      "domain": "commerce",
+      "version": "0.1.0",
+      "trigger": "When a product or store review arrives",
+      "outcome": "Approved public response and internal case",
+      "sideEffects": "external_send",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/commerce-05.md",
+      "sourceIds": ["n8n-reviews", "shopify-flow", "google-review-replies"],
+      "evidenceUrls": [
+        "https://n8n.io/workflows/12066-analyze-woocommerce-product-reviews-with-gpt-4-airtable-and-slack-summaries/",
+        "https://www.shopify.com/flow",
+        "https://developers.google.com/my-business/content/review-data"
+      ],
+      "resultFields": [
+        "reviewConcern",
+        "publicDraft",
+        "privateCaseContext",
+        "actionReferences",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "commerce-05",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    },
+    {
+      "id": "commerce-06",
+      "title": "Repeat-customer retention opportunities",
+      "domain": "commerce",
+      "version": "0.1.0",
+      "trigger": "Every week after purchase activity refresh",
+      "outcome": "Retention opportunity brief and campaign drafts",
+      "sideEffects": "artifact_only",
+      "runtimeSkill": "optional",
+      "authoredStatus": "authored_adaptation",
+      "connectorStatus": "unverified",
+      "reference": "recipes/commerce-06.md",
+      "sourceIds": ["shopify-flow", "shopify-examples", "make-marketing"],
+      "evidenceUrls": [
+        "https://www.shopify.com/flow",
+        "https://help.shopify.com/en/manual/shopify-flow/reference/examples?locale=en%23%2Flogin",
+        "https://www.make.com/en/solutions/automate-marketing"
+      ],
+      "resultFields": [
+        "retentionSignals",
+        "eligibleSegments",
+        "contentDrafts",
+        "exclusions",
+        "sourceReferences",
+        "missingData"
+      ],
+      "family": "commerce-06",
+      "selectionBoundary": "Select for the stated business object, trigger and result; app substitutions do not create another outcome.",
+      "relatedRecipes": []
+    }
+  ]
+}

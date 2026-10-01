@@ -1,0 +1,36 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "neonloops-workflows",
+  "version": "0.1.2",
+  "description": "Turn recurring work into an agentic workflow in your neonloops workspace.",
+  "author": {
+    "name": "neonloops",
+    "email": "hi@neonloops.com",
+    "url": "https://neonloops.com/imprint"
+  },
+  "homepage": "https://neonloops.com/mcp",
+  "license": "MIT",
+  "keywords": ["agentic-workflows", "operations", "recipes"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "neonloops Workflows",
+        "shortDescription": "Build agentic workflows",
+        "longDescription": "Choose an outcome, adapt a researched recipe to your workspace, and create an agentic workflow with explicit inputs, outputs and review steps. Requires a neonloops account and a connected workspace.",
+        "developerName": "neonloops",
+        "category": "Productivity",
+        "capabilities": ["Find workflow recipes", "Create workflows", "Validate workflows"],
+        "websiteURL": "https://neonloops.com",
+        "privacyPolicyURL": "https://neonloops.com/privacy",
+        "termsOfServiceURL": "https://neonloops.com/terms",
+        "defaultPrompt": [
+          "Every Monday, prepare a sales pipeline exception digest.",
+          "When a support ticket opens, prepare a reply for review.",
+          "Help me choose a workflow for recurring operations work."
+        ],
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      }
+    }
+  }
+}

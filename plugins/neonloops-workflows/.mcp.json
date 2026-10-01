@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "neonloops": {
+      "type": "http",
+      "url": "https://app.neonloops.com/api/mcp/v1"
+    }
+  }
+}

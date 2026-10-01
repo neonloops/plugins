@@ -1,0 +1,13 @@
+interface:
+  display_name: "Create a neonloops workflow"
+  short_description: "Choose a recipe for recurring work and set it up"
+  default_prompt: "Use $create-workflow to choose and install a neonloops workflow recipe."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "neonloops"
+      description: "Create and validate workflows in a neonloops workspace"
+      transport: "streamable_http"
+      url: "https://app.neonloops.com/api/mcp/openai"
+policy:
+  allow_implicit_invocation: true

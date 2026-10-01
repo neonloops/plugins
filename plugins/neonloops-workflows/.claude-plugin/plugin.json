@@ -1,0 +1,13 @@
+{
+  "name": "neonloops-workflows",
+  "version": "0.1.2",
+  "description": "Turn recurring work into an agentic workflow in your neonloops workspace.",
+  "author": {
+    "name": "neonloops",
+    "email": "hi@neonloops.com",
+    "url": "https://neonloops.com/imprint"
+  },
+  "homepage": "https://neonloops.com/mcp",
+  "license": "MIT",
+  "displayName": "neonloops Workflows"
+}
